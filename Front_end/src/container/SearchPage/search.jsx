@@ -111,6 +111,12 @@ export default class Search extends Component {
     event.target.value && this.setState({ searchType: "tool" })
   }
 
+  setTagType = (event) => {
+    event.target.value && this.setState({ searchType: "tag" })
+  }
+
+
+
   renderTag = (arr) => {
     return (
       <>
@@ -159,7 +165,7 @@ export default class Search extends Component {
           color: "rgb(12, 71, 116)",
         }}
       >
-        No Data
+        Sorry! There are no results related to "{this.state.searchContent}"
       </div>
     )
   }
@@ -281,7 +287,17 @@ export default class Search extends Component {
                 style={{ marginRight: "15px", width: "60px" }}
                 onChange={this.setToolType}
               />
+              <Form.Check
+                type="radio"
+                label="Tag"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios4"
+                style={{ marginRight: "25px", width: "60px" }}
+                onChange={this.setTagType}
+              />
             </Form>
+
+
           </div>
         </div>
         {this.state.showResult && this.renderSearchResult()}
